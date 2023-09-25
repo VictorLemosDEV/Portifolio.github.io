@@ -8,6 +8,8 @@
     --text-color : #e2d9e9;
 }
 
+
+
 * {
     color: var(--text-color);
     font-family: "Montserrat", sans-serif;
@@ -15,12 +17,36 @@
     margin: 0;
     padding: 0;
     
+    
 
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 html{
     min-height: 100%;
     position:relative;
+    
+    
+    
     
   }
 
@@ -30,6 +56,8 @@ body {
     background: linear-gradient(0, var(--main-color), #000000);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow-x: hidden;
+    
 }
 
 li, a, button {
@@ -87,9 +115,13 @@ button:hover {
 
 
 
-div.main {
+div.main .about {
     display: grid;
-    grid-template-areas: "typewriter typewriter icon";
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 25vh 75vh;
+    grid-template-areas: "avatar abstract"
+                         ". resumo"
+                        
 
 }
 
@@ -157,13 +189,85 @@ div.main {
     }
   }
 
+
+p.big {
+  font-size: 2.2vw;
+}
+
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: block;
+}
+
+/* Adicione um estilo básico para o ícone */
+.icon {
+  grid-area: avatar;
+  width: 256px;
+  border-radius: 50vw;
+  position: relative;
+  display: none;
+}
+
+.ocean {
+  height: 5%;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  background: #6b5da4;
+  z-index: -999;
+}
+
+.wave {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/wavePurple.svg) repeat-x;
+  position: absolute;
+  margin-top: 30%;
+  width: 6400px;
+  height: 198px;
+  animation: wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite, swell 8s ease -1.25s infinite;;
+  transform: translate3d(0, 0, 0);
+}
+
+
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+@keyframes swell {
+  0%,
+  100% {
+    transform: translate3d(0, -40px, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+.endWave{
+  display:none;
+}
+
+
+
+
+
+
+
+
+
+
+
 #abstract {
-    font-size: 4.2vw;
+    
+    grid-area: resumo;
     white-space: pre;
     font-weight: 500;
-    font-size: 2rem;
-    line-break: strict;
+    word-break: break-all;
 }
+
 
 
 
@@ -178,12 +282,12 @@ div.main {
   }
   
   #typewriter{
-    height: 500px;
-    width: 500px;
+    height: 250;
+    width: 250;
     display: inline;
     grid-area: typewriter;
     
-      font-size: 2em;
+      font-size: 1em;
 
       color: var(--text-color);
   
@@ -246,6 +350,85 @@ div.main {
   }
 
 
+
+/* other */
+.info {
+  margin: 20px 0;
+  text-align: center;
+}
+
+
+
+
+/* block-$ */
+.block-effect {
+  grid-area: abstract;
+  font-size: calc(8px + 3vw);
+}
+
+.block-reveal {
+  --t: calc(var(--td) + var(--d));
+
+  color: transparent;
+  padding: 4px;
+
+  position: relative;
+  overflow: hidden;
+
+  animation: revealBlock 0s var(--t) forwards;
+}
+
+.block-reveal::after {
+  content: '';
+
+  width: 0%;
+  height: 100%;
+  padding-bottom: 4px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background: var(--bc);
+  animation: revealingIn var(--td) var(--d) forwards, revealingOut var(--td) var(--t) forwards;
+}
+
+
+/* animations */
+@keyframes revealBlock {
+  100% {
+    color: var(--text-color);
+  }
+}
+
+@keyframes revealingIn {
+
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes revealingOut {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+
+}
+
+@media screen and (min-width: 62em) {
+.icon {
+    display: block;
+}
+}
 
 
   
