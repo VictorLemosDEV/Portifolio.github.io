@@ -69,7 +69,7 @@ function setupTypewriter(t) {
 
 //typewriter.type();
 
-
+console.log("Modificando imagens")
 
 
 var botbadges = document.getElementsByClassName("bot");
