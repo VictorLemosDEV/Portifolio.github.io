@@ -63,8 +63,27 @@ function setupTypewriter(t) {
     };
 }
 
-var typer = document.getElementById('typewriter');
+//var typer = document.getElementById('typewriter');
 
-typewriter = setupTypewriter(typewriter);
+//typewriter = setupTypewriter(typewriter);
 
-typewriter.type();
+//typewriter.type();
+
+
+
+
+var botbadges = document.getElementsByClassName("bot");
+var websitebadges = document.getElementsByClassName("website");
+var gamebadges = document.getElementsByClassName("game");
+
+for (var i = 0; i < botbadges.length; i++) {
+  botbadges[i].src = "./images/discord-bot-badge.png";
+}
+
+for (var i = 0; i < websitebadges.length; i++) {
+    websitebadges[i].src = "./images/website-badge.png";
+  }
+
+  for (var i = 0; i < gamebadges.length; i++) {
+    gamebadges[i].src = "./images/game-badge.png";
+  }
